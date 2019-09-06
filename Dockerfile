@@ -16,7 +16,6 @@ RUN yum update -y \
     && chown -R flare: /opt/flare
 RUN cd /opt/flare && python /opt/flare/setup.py install || true
 USER flare
-
 STOPSIGNAL SIGTERM
 
 CMD  flare_beacon -c /opt/flare/configs/elasticsearch.ini -who -json=/opt/flare/output/output.json
