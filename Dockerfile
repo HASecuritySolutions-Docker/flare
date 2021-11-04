@@ -3,7 +3,7 @@ FROM python:3.8.7-slim
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
 RUN apt update -y \
-    && apt install -y git curl python3-lxml \
+    && apt install -y git curl gcc python3-lxml \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
     && cd /opt && git clone https://github.com/austin-taylor/flare.git \
