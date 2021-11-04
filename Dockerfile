@@ -1,4 +1,4 @@
-FROM python:3.8.7-slim
+FROM python:3.8.12-slim
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
