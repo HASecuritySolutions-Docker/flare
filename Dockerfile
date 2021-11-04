@@ -1,11 +1,11 @@
-FROM centos:latest
+FROM python:3.8.7-slim
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
-RUN yum update -y \
-    && yum install -y python2 python2-devel git gcc python2-lxml \
+RUN apt update -y \
+    && apt install -y git curl python3-lxml \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python2 get-pip.py \
+    && python3 get-pip.py \
     && cd /opt && git clone https://github.com/austin-taylor/flare.git \
     && cd /opt/flare && pip install -r requirements.txt \
     && useradd -ms /bin/bash flare \
@@ -14,7 +14,7 @@ RUN yum update -y \
     && mkdir /opt/flare/output/ \
     && ln -sf /dev/stderr /var/log/flare/flare.log \
     && chown -R flare: /opt/flare
-RUN cd /opt/flare && python2 /opt/flare/setup.py install || true
+RUN cd /opt/flare && python3 /opt/flare/setup.py install || true
 USER flare
 STOPSIGNAL SIGTERM
 
